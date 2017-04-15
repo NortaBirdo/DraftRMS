@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,
-  Vcl.ComCtrls, Vcl.ToolWin, Vcl.ExtCtrls;
+  Vcl.ComCtrls, Vcl.ToolWin, Vcl.ExtCtrls, Vcl.Menus;
 
 type
   TMainForm = class(TForm)
@@ -22,6 +22,9 @@ type
     StakeholderBtn: TToolButton;
     ToolButton3: TToolButton;
     Backlog: TToolButton;
+    CopyCR: TPopupMenu;
+    CopyCRLink1: TMenuItem;
+    CopyCRLink2: TMenuItem;
     procedure CreateNewRequirementBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure NewGroupBtnClick(Sender: TObject);
@@ -30,6 +33,8 @@ type
     procedure DeleteGroupBtnClick(Sender: TObject);
     procedure StakeholderBtnClick(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
+    procedure CopyCRLink1Click(Sender: TObject);
+    procedure CopyCRLink2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -44,7 +49,21 @@ implementation
 
 {$R *.dfm}
 
-uses DataModuleUnit, RequirementCardUnit, StakehodlerUnit;
+uses DataModuleUnit, RequirementCardUnit, StakehodlerUnit, ShellApi, Clipbrd;
+
+procedure TMainForm.CopyCRLink1Click(Sender: TObject);
+begin
+  ShellExecute( Handle, 'open', PWideChar(MSSQLDataModule.RequirementTable.FieldByName('ChangeRequestLink').AsString), nil, nil, SW_NORMAL );
+end;
+
+procedure TMainForm.CopyCRLink2Click(Sender: TObject);
+var
+  clipboard: TClipboard;
+begin
+  ClipBoard:=TClipboard.Create;
+  Clipboard.SetTextBuf(PWideChar(MSSQLDataModule.RequirementTable.FieldByName('ChangeRequestLink').AsString));
+  Clipboard.Free;
+end;
 
 procedure TMainForm.CreateNewRequirementBtnClick(Sender: TObject);
 begin

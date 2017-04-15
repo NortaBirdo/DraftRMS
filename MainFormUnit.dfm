@@ -82,6 +82,7 @@ object MainForm: TMainForm
       item
         Expanded = False
         FieldName = 'ChangeRequestLink'
+        PopupMenu = CopyCR
         Width = 149
         Visible = True
       end>
@@ -130,7 +131,6 @@ object MainForm: TMainForm
     Caption = 'ToolBar1'
     ShowCaptions = True
     TabOrder = 2
-    ExplicitWidth = 1077
     object CreateNewRequirementBtn: TToolButton
       Left = 0
       Top = 0
@@ -195,6 +195,18 @@ object MainForm: TMainForm
       Top = 0
       Caption = 'Backlog'
       ImageIndex = 5
+    end
+  end
+  object CopyCR: TPopupMenu
+    Left = 944
+    Top = 96
+    object CopyCRLink1: TMenuItem
+      Caption = 'Open CR Link'
+      OnClick = CopyCRLink1Click
+    end
+    object CopyCRLink2: TMenuItem
+      Caption = 'Copy CR Link'
+      OnClick = CopyCRLink2Click
     end
   end
 end
