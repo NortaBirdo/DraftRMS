@@ -7,19 +7,9 @@ uses
 
 type
   TMSSQLDataModule = class(TDataModule)
-    LinkTypeDS: TDataSource;
     MSSQLConnection: TADOConnection;
-    LinkTypeTable: TADOTable;
-    LinkTypeTableId: TAutoIncField;
-    LinkTypeTableText: TMemoField;
     RequirementDS: TDataSource;
     RequirementTable: TADOTable;
-    RequirementTableId: TAutoIncField;
-    RequirementTableText: TMemoField;
-    RequirementTableTypeId: TIntegerField;
-    RequirementTablePriority: TIntegerField;
-    RequirementTableStatusId: TIntegerField;
-    RequirementTableGroupId: TIntegerField;
     GroupDS: TDataSource;
     GroupTable: TADOTable;
     GroupTableId: TAutoIncField;
@@ -28,6 +18,26 @@ type
     StakehodlerTable: TADOTable;
     StakehodlerTableId: TAutoIncField;
     StakehodlerTablePersonName: TWideStringField;
+    RequirementTableId: TAutoIncField;
+    RequirementTableRawText: TWideMemoField;
+    RequirementTableTypeId: TIntegerField;
+    RequirementTablePriority: TIntegerField;
+    RequirementTableStatusId: TIntegerField;
+    RequirementTableGroupId: TIntegerField;
+    RequirementTableComment: TWideMemoField;
+    RequirementTableElicitationDate: TDateTimeField;
+    RequirementTableChangeRequestLink: TWideStringField;
+    TypeDS: TDataSource;
+    TypeTable: TADOTable;
+    TypeTableId: TAutoIncField;
+    TypeTableCaption: TWideStringField;
+    StatusTable: TADOTable;
+    StatusDS: TDataSource;
+    StatusTableId: TAutoIncField;
+    StatusTableCaption: TWideStringField;
+    RequirementTableShort: TWideStringField;
+    RequirementTableStatus: TStringField;
+    RequirementTableType: TStringField;
 
 
   private

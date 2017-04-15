@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,
-  Vcl.ComCtrls, Vcl.ToolWin, ManagmentGroupUnit, Vcl.ExtCtrls;
+  Vcl.ComCtrls, Vcl.ToolWin, Vcl.ExtCtrls;
 
 type
   TMainForm = class(TForm)
@@ -20,6 +20,8 @@ type
     Splitter1: TSplitter;
     ToolButton2: TToolButton;
     StakeholderBtn: TToolButton;
+    ToolButton3: TToolButton;
+    Backlog: TToolButton;
     procedure CreateNewRequirementBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure NewGroupBtnClick(Sender: TObject);
@@ -27,11 +29,12 @@ type
     procedure DBGrid2TitleClick(Column: TColumn);
     procedure DeleteGroupBtnClick(Sender: TObject);
     procedure StakeholderBtnClick(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
-    ManagerGroup: TManagmentGroup;
+
   end;
 
 var
@@ -45,8 +48,17 @@ uses DataModuleUnit, RequirementCardUnit, StakehodlerUnit;
 
 procedure TMainForm.CreateNewRequirementBtnClick(Sender: TObject);
 begin
+  MSSQLDataModule.RequirementTable.Insert;
   Application.CreateForm(TRequirementCardForm, RequirementCardForm);
-  RequirementCardForm.Show;
+  RequirementCardForm.ShowModal;
+  RequirementCardForm.Free;
+end;
+
+procedure TMainForm.DBGrid1DblClick(Sender: TObject);
+begin
+  Application.CreateForm(TRequirementCardForm, RequirementCardForm);
+  RequirementCardForm.ShowModal;
+  RequirementCardForm.Free;
 end;
 
 procedure TMainForm.DBGrid2TitleClick(Column: TColumn);
@@ -59,9 +71,14 @@ end;
 
 procedure TMainForm.DeleteGroupBtnClick(Sender: TObject);
 begin
-  if MessageDlg('Are you sure to want to delete the group: '+MSSQLDataModule.GroupTable.FieldByName('Caption').AsString,
+  if MessageDlg('Are you sure that you want to delete the group: '+MSSQLDataModule.GroupTable.FieldByName('Caption').AsString,
        mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-    MSSQLDataModule.GroupTable.Delete;
+    try
+      MSSQLDataModule.GroupTable.Delete;
+    except
+      ShowMessage('Sorry, this group has requirement(s). You can not delete one');
+
+    end;
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);

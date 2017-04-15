@@ -3,7 +3,7 @@ object MainForm: TMainForm
   Top = 0
   Caption = 'Draft RMS'
   ClientHeight = 633
-  ClientWidth = 816
+  ClientWidth = 1136
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -26,7 +26,7 @@ object MainForm: TMainForm
   object DBGrid1: TDBGrid
     Left = 204
     Top = 29
-    Width = 612
+    Width = 932
     Height = 604
     Align = alClient
     DataSource = MSSQLDataModule.RequirementDS
@@ -42,40 +42,48 @@ object MainForm: TMainForm
     TitleFont.Height = -13
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = [fsBold]
+    OnDblClick = DBGrid1DblClick
     Columns = <
       item
         Expanded = False
         FieldName = 'Id'
+        Width = 40
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'Text'
-        Width = 64
+        FieldName = 'Type'
+        ReadOnly = True
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'TypeId'
-        Width = 64
+        FieldName = 'Short'
+        ReadOnly = True
+        Width = 202
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'Priority'
-        Width = 64
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'StatusId'
-        Width = 64
+        FieldName = 'Status'
+        ReadOnly = True
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'GroupId'
-        Visible = False
+        FieldName = 'ElicitationDate'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ChangeRequestLink'
+        Width = 149
+        Visible = True
       end>
   end
   object DBGrid2: TDBGrid
@@ -115,13 +123,14 @@ object MainForm: TMainForm
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 816
+    Width = 1136
     Height = 29
     ButtonHeight = 24
     ButtonWidth = 121
     Caption = 'ToolBar1'
     ShowCaptions = True
     TabOrder = 2
+    ExplicitWidth = 1077
     object CreateNewRequirementBtn: TToolButton
       Left = 0
       Top = 0
@@ -172,6 +181,20 @@ object MainForm: TMainForm
       Caption = 'Stakeholders'
       ImageIndex = 4
       OnClick = StakeholderBtnClick
+    end
+    object ToolButton3: TToolButton
+      Left = 621
+      Top = 0
+      Width = 8
+      Caption = 'ToolButton3'
+      ImageIndex = 5
+      Style = tbsSeparator
+    end
+    object Backlog: TToolButton
+      Left = 629
+      Top = 0
+      Caption = 'Backlog'
+      ImageIndex = 5
     end
   end
 end
