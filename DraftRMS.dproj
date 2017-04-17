@@ -105,6 +105,10 @@
             <Form>StakeholderForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="BacklogUnit.pas">
+            <Form>BacklogForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

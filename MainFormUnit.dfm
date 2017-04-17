@@ -195,6 +195,7 @@ object MainForm: TMainForm
       Top = 0
       Caption = 'Backlog'
       ImageIndex = 5
+      OnClick = BacklogClick
     end
   end
   object CopyCR: TPopupMenu

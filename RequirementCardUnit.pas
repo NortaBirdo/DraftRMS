@@ -21,12 +21,14 @@ type
     Label8: TLabel;
     Label9: TLabel;
     ReqTextEdit: TDBRichEdit;
-    CommentEdit: TDBRichEdit;
     DBEdit1: TDBEdit;
     DBEdit2: TDBEdit;
     PriorityEdit: TDBEdit;
     DBLookupComboBox1: TDBLookupComboBox;
     DBLookupComboBox2: TDBLookupComboBox;
+    DBMemo1: TDBMemo;
+    Label10: TLabel;
+    DBLookupComboBox3: TDBLookupComboBox;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
   private

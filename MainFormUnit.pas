@@ -35,6 +35,7 @@ type
     procedure DBGrid1DblClick(Sender: TObject);
     procedure CopyCRLink1Click(Sender: TObject);
     procedure CopyCRLink2Click(Sender: TObject);
+    procedure BacklogClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,7 +50,13 @@ implementation
 
 {$R *.dfm}
 
-uses DataModuleUnit, RequirementCardUnit, StakehodlerUnit, ShellApi, Clipbrd;
+uses DataModuleUnit, RequirementCardUnit, StakehodlerUnit, ShellApi, Clipbrd,
+  BacklogUnit;
+
+procedure TMainForm.BacklogClick(Sender: TObject);
+begin
+  BacklogForm.Show;
+end;
 
 procedure TMainForm.CopyCRLink1Click(Sender: TObject);
 begin

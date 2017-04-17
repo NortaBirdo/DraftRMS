@@ -25,30 +25,30 @@ object RequirementCardForm: TRequirementCardForm
   end
   object Label2: TLabel
     Left = 8
-    Top = 67
+    Top = 99
     Width = 99
     Height = 13
     Caption = 'Text of Requirement'
   end
   object Label3: TLabel
     Left = 687
-    Top = 43
+    Top = 75
     Width = 38
     Height = 13
     Caption = 'Authors'
   end
   object Label4: TLabel
-    Left = 440
-    Top = 8
+    Left = 304
+    Top = 11
     Width = 34
     Height = 13
     Caption = 'Proirity'
   end
   object Label5: TLabel
-    Left = 232
-    Top = 8
+    Left = 8
+    Top = 35
     Width = 24
-    Height = 14
+    Height = 13
     Caption = 'Type'
   end
   object Label6: TLabel
@@ -67,9 +67,9 @@ object RequirementCardForm: TRequirementCardForm
   end
   object Label8: TLabel
     Left = 8
-    Top = 43
+    Top = 75
     Width = 105
-    Height = 14
+    Height = 13
     Caption = 'Change Request Link:'
   end
   object Label9: TLabel
@@ -78,6 +78,13 @@ object RequirementCardForm: TRequirementCardForm
     Width = 45
     Height = 13
     Caption = 'Comment'
+  end
+  object Label10: TLabel
+    Left = 304
+    Top = 35
+    Width = 29
+    Height = 13
+    Caption = 'Group'
   end
   object Button1: TButton
     Left = 901
@@ -99,9 +106,9 @@ object RequirementCardForm: TRequirementCardForm
   end
   object ReqTextEdit: TDBRichEdit
     Left = 8
-    Top = 86
+    Top = 128
     Width = 673
-    Height = 428
+    Height = 386
     DataField = 'RawText'
     DataSource = MSSQLDataModule.RequirementDS
     Font.Charset = RUSSIAN_CHARSET
@@ -112,20 +119,6 @@ object RequirementCardForm: TRequirementCardForm
     ScrollBars = ssVertical
     TabOrder = 2
   end
-  object CommentEdit: TDBRichEdit
-    Left = 687
-    Top = 377
-    Width = 289
-    Height = 137
-    DataField = 'Comment'
-    DataSource = MSSQLDataModule.RequirementDS
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    TabOrder = 3
-  end
   object DBEdit1: TDBEdit
     Left = 792
     Top = 8
@@ -134,29 +127,29 @@ object RequirementCardForm: TRequirementCardForm
     DataField = 'ElicitationDate'
     DataSource = MSSQLDataModule.RequirementDS
     MaxLength = 8
-    TabOrder = 4
+    TabOrder = 3
   end
   object DBEdit2: TDBEdit
     Left = 119
-    Top = 40
+    Top = 72
     Width = 562
     Height = 21
     DataField = 'ChangeRequestLink'
     DataSource = MSSQLDataModule.RequirementDS
-    TabOrder = 5
+    TabOrder = 4
   end
   object PriorityEdit: TDBEdit
-    Left = 480
-    Top = 5
+    Left = 344
+    Top = 8
     Width = 201
     Height = 21
     DataField = 'Priority'
     DataSource = MSSQLDataModule.RequirementDS
-    TabOrder = 6
+    TabOrder = 5
   end
   object DBLookupComboBox1: TDBLookupComboBox
-    Left = 262
-    Top = 8
+    Left = 49
+    Top = 35
     Width = 145
     Height = 21
     DataField = 'TypeId'
@@ -164,7 +157,7 @@ object RequirementCardForm: TRequirementCardForm
     KeyField = 'Id'
     ListField = 'Caption'
     ListSource = MSSQLDataModule.TypeDS
-    TabOrder = 7
+    TabOrder = 6
   end
   object DBLookupComboBox2: TDBLookupComboBox
     Left = 49
@@ -176,6 +169,27 @@ object RequirementCardForm: TRequirementCardForm
     KeyField = 'Id'
     ListField = 'Caption'
     ListSource = MSSQLDataModule.StatusDS
+    TabOrder = 7
+  end
+  object DBMemo1: TDBMemo
+    Left = 687
+    Top = 377
+    Width = 289
+    Height = 137
+    DataField = 'Comment'
+    DataSource = MSSQLDataModule.RequirementDS
     TabOrder = 8
+  end
+  object DBLookupComboBox3: TDBLookupComboBox
+    Left = 344
+    Top = 35
+    Width = 201
+    Height = 21
+    DataField = 'GroupId'
+    DataSource = MSSQLDataModule.RequirementDS
+    KeyField = 'Id'
+    ListField = 'Caption'
+    ListSource = MSSQLDataModule.GroupForRCDS
+    TabOrder = 9
   end
 end
