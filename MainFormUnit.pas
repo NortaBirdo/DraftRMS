@@ -18,24 +18,21 @@ type
     SaveGroupBtn: TToolButton;
     DeleteGroupBtn: TToolButton;
     Splitter1: TSplitter;
-    ToolButton2: TToolButton;
-    StakeholderBtn: TToolButton;
     ToolButton3: TToolButton;
     Backlog: TToolButton;
-    CopyCR: TPopupMenu;
-    CopyCRLink1: TMenuItem;
-    CopyCRLink2: TMenuItem;
+    PopupMenu1: TPopupMenu;
+    OpenURL1: TMenuItem;
+    CopyURL1: TMenuItem;
     procedure CreateNewRequirementBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure NewGroupBtnClick(Sender: TObject);
     procedure SaveGroupBtnClick(Sender: TObject);
     procedure DBGrid2TitleClick(Column: TColumn);
     procedure DeleteGroupBtnClick(Sender: TObject);
-    procedure StakeholderBtnClick(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
-    procedure CopyCRLink1Click(Sender: TObject);
-    procedure CopyCRLink2Click(Sender: TObject);
     procedure BacklogClick(Sender: TObject);
+    procedure OpenURL1Click(Sender: TObject);
+    procedure CopyURL1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -58,18 +55,14 @@ begin
   BacklogForm.Show;
 end;
 
-procedure TMainForm.CopyCRLink1Click(Sender: TObject);
-begin
-  ShellExecute( Handle, 'open', PWideChar(MSSQLDataModule.RequirementTable.FieldByName('ChangeRequestLink').AsString), nil, nil, SW_NORMAL );
-end;
-
-procedure TMainForm.CopyCRLink2Click(Sender: TObject);
+procedure TMainForm.CopyURL1Click(Sender: TObject);
 var
   clipboard: TClipboard;
 begin
   ClipBoard:=TClipboard.Create;
   Clipboard.SetTextBuf(PWideChar(MSSQLDataModule.RequirementTable.FieldByName('ChangeRequestLink').AsString));
   Clipboard.Free;
+
 end;
 
 procedure TMainForm.CreateNewRequirementBtnClick(Sender: TObject);
@@ -117,16 +110,14 @@ begin
   MSSQLDataModule.GroupTable.Insert;
 end;
 
+procedure TMainForm.OpenURL1Click(Sender: TObject);
+begin
+ ShellExecute( Handle, 'open', PWideChar(MSSQLDataModule.RequirementTable.FieldByName('ChangeRequestLink').AsString), nil, nil, SW_NORMAL );
+end;
+
 procedure TMainForm.SaveGroupBtnClick(Sender: TObject);
 begin
  MSSQLDataModule.GroupTable.Post;
-end;
-
-procedure TMainForm.StakeholderBtnClick(Sender: TObject);
-begin
-  Application.CreateForm(TStakeholderForm, StakeholderForm);
-  StakeholderForm.ShowModal;
-  StakeholderForm.Free;
 end;
 
 end.

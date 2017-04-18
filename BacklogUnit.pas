@@ -15,8 +15,8 @@ type
     ShowArchiveChB: TCheckBox;
     DescriptionEdit: TEdit;
     InitSQL: TMemo;
+    ExcludeCRChB: TCheckBox;
     procedure FormCreate(Sender: TObject);
-    procedure FormShow(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure TypeFilterListChange(Sender: TObject);
     procedure findBtnClick(Sender: TObject);
@@ -92,11 +92,6 @@ end;
 procedure TBacklogForm.FormCreate(Sender: TObject);
 begin
  Find;
-end;
-
-procedure TBacklogForm.FormShow(Sender: TObject);
-begin
-  MSSQLDataModule.Backlog.Refresh;
 end;
 
 procedure TBacklogForm.ShowArchiveChBClick(Sender: TObject);

@@ -5,7 +5,6 @@ uses
   MainFormUnit in 'MainFormUnit.pas' {MainForm},
   DataModuleUnit in 'DataModuleUnit.pas' {MSSQLDataModule: TDataModule},
   RequirementCardUnit in 'RequirementCardUnit.pas' {RequirementCardForm},
-  StakehodlerUnit in 'StakehodlerUnit.pas' {StakeholderForm},
   BacklogUnit in 'BacklogUnit.pas' {BacklogForm};
 
 {$R *.res}

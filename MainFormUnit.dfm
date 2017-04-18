@@ -3,7 +3,7 @@ object MainForm: TMainForm
   Top = 0
   Caption = 'Draft RMS'
   ClientHeight = 633
-  ClientWidth = 1136
+  ClientWidth = 1184
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,7 +16,7 @@ object MainForm: TMainForm
   PixelsPerInch = 96
   TextHeight = 16
   object Splitter1: TSplitter
-    Left = 201
+    Left = 181
     Top = 29
     Height = 604
     ExplicitLeft = 208
@@ -24,9 +24,9 @@ object MainForm: TMainForm
     ExplicitHeight = 100
   end
   object DBGrid1: TDBGrid
-    Left = 204
+    Left = 184
     Top = 29
-    Width = 932
+    Width = 1000
     Height = 604
     Align = alClient
     DataSource = MSSQLDataModule.RequirementDS
@@ -36,6 +36,7 @@ object MainForm: TMainForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
+    PopupMenu = PopupMenu1
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -54,83 +55,60 @@ object MainForm: TMainForm
         Expanded = False
         FieldName = 'Type'
         ReadOnly = True
+        Width = 59
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Authors'
+        ReadOnly = True
+        Width = 138
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'Short'
         ReadOnly = True
-        Width = 202
+        Width = 313
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'Priority'
+        Width = 59
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'Status'
         ReadOnly = True
+        Width = 84
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'ElicitationDate'
+        Width = 103
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'ChangeRequestLink'
-        PopupMenu = CopyCR
-        Width = 149
-        Visible = True
-      end>
-  end
-  object DBGrid2: TDBGrid
-    Left = 0
-    Top = 29
-    Width = 201
-    Height = 604
-    Align = alLeft
-    DataSource = MSSQLDataModule.GroupDS
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 1
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -13
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = [fsBold]
-    OnTitleClick = DBGrid2TitleClick
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'Id'
-        Visible = False
-      end
-      item
-        Expanded = False
-        FieldName = 'Caption'
-        Title.Caption = 'Name of Group'
-        Width = 149
+        PopupMenu = PopupMenu1
+        Width = 138
         Visible = True
       end>
   end
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 1136
+    Width = 1184
     Height = 29
     ButtonHeight = 24
     ButtonWidth = 121
     Caption = 'ToolBar1'
     ShowCaptions = True
-    TabOrder = 2
+    TabOrder = 1
     object CreateNewRequirementBtn: TToolButton
       Left = 0
       Top = 0
@@ -167,23 +145,8 @@ object MainForm: TMainForm
       ImageIndex = 3
       OnClick = DeleteGroupBtnClick
     end
-    object ToolButton2: TToolButton
-      Left = 492
-      Top = 0
-      Width = 8
-      Caption = 'ToolButton2'
-      ImageIndex = 4
-      Style = tbsSeparator
-    end
-    object StakeholderBtn: TToolButton
-      Left = 500
-      Top = 0
-      Caption = 'Stakeholders'
-      ImageIndex = 4
-      OnClick = StakeholderBtnClick
-    end
     object ToolButton3: TToolButton
-      Left = 621
+      Left = 492
       Top = 0
       Width = 8
       Caption = 'ToolButton3'
@@ -191,23 +154,57 @@ object MainForm: TMainForm
       Style = tbsSeparator
     end
     object Backlog: TToolButton
-      Left = 629
+      Left = 500
       Top = 0
       Caption = 'Backlog'
       ImageIndex = 5
       OnClick = BacklogClick
     end
   end
-  object CopyCR: TPopupMenu
+  object DBGrid2: TDBGrid
+    Left = 0
+    Top = 29
+    Width = 181
+    Height = 604
+    Align = alLeft
+    DataSource = MSSQLDataModule.GroupDS
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -13
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = [fsBold]
+    OnTitleClick = DBGrid2TitleClick
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'Id'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'Caption'
+        Title.Caption = 'Name of Group'
+        Width = 149
+        Visible = True
+      end>
+  end
+  object PopupMenu1: TPopupMenu
     Left = 944
-    Top = 96
-    object CopyCRLink1: TMenuItem
-      Caption = 'Open CR Link'
-      OnClick = CopyCRLink1Click
+    Top = 120
+    object OpenURL1: TMenuItem
+      Caption = 'Open URL'
+      OnClick = OpenURL1Click
     end
-    object CopyCRLink2: TMenuItem
-      Caption = 'Copy CR Link'
-      OnClick = CopyCRLink2Click
+    object CopyURL1: TMenuItem
+      Caption = 'Copy URL'
+      OnClick = CopyURL1Click
     end
   end
 end

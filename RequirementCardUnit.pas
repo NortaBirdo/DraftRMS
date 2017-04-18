@@ -5,19 +5,18 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.DBCtrls,
-  Vcl.Mask;
+  Vcl.Mask, Vcl.Grids, Vcl.DBGrids;
 
 type
   TRequirementCardForm = class(TForm)
-    Button1: TButton;
-    Button2: TButton;
+    SaveBtn: TButton;
+    CancelBtn: TButton;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
-    Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
     ReqTextEdit: TDBRichEdit;
@@ -29,8 +28,13 @@ type
     DBMemo1: TDBMemo;
     Label10: TLabel;
     DBLookupComboBox3: TDBLookupComboBox;
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
+    Label12: TLabel;
+    DBEdit3: TDBEdit;
+    Author: TDBMemo;
+    Label7: TLabel;
+    DBMemo2: TDBMemo;
+    procedure CancelBtnClick(Sender: TObject);
+    procedure SaveBtnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,21 +50,18 @@ implementation
 
 uses DataModuleUnit;
 
-procedure TRequirementCardForm.Button1Click(Sender: TObject);
+
+procedure TRequirementCardForm.SaveBtnClick(Sender: TObject);
 begin
-  with MSSQLDataModule do
-    begin
-      RequirementTable.Edit;
-      RequirementTable.FieldByName('Short').Value := copy(string(ReqTextEdit.Text), 0, 80);
-      RequirementTable.Post;
-    end;
-    RequirementCardForm.Close;
+  MSSQLDataModule.RequirementTable.Post;
+  RequirementCardForm.Close;
 end;
 
-procedure TRequirementCardForm.Button2Click(Sender: TObject);
+procedure TRequirementCardForm.CancelBtnClick(Sender: TObject);
 begin
   MSSQLDataModule.RequirementTable.Cancel;
   RequirementCardForm.Close;
 end;
+
 
 end.

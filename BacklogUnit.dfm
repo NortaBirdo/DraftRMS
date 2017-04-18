@@ -13,7 +13,6 @@ object BacklogForm: TBacklogForm
   OldCreateOrder = False
   Position = poMainFormCenter
   OnCreate = FormCreate
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object DBGrid1: TDBGrid
@@ -78,8 +77,6 @@ object BacklogForm: TBacklogForm
     Height = 33
     Align = alTop
     TabOrder = 1
-    ExplicitTop = 8
-    ExplicitWidth = 967
     object TypeFilterList: TComboBox
       Left = 11
       Top = 2
@@ -110,6 +107,14 @@ object BacklogForm: TBacklogForm
       Height = 22
       TabOrder = 2
       OnChange = DescriptionEditChange
+    end
+    object ExcludeCRChB: TCheckBox
+      Left = 486
+      Top = 2
+      Width = 179
+      Height = 22
+      Caption = 'Exclude CR Requirement'
+      TabOrder = 3
     end
   end
   object InitSQL: TMemo

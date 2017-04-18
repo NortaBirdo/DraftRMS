@@ -1,5 +1,6 @@
 object MSSQLDataModule: TMSSQLDataModule
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
   Height = 586
   Width = 730
   object MSSQLConnection: TADOConnection
@@ -16,7 +17,7 @@ object MSSQLDataModule: TMSSQLDataModule
   object RequirementDS: TDataSource
     DataSet = RequirementTable
     Left = 280
-    Top = 168
+    Top = 88
   end
   object RequirementTable: TADOTable
     Active = True
@@ -27,7 +28,7 @@ object MSSQLDataModule: TMSSQLDataModule
     MasterSource = GroupDS
     TableName = 'Requirement'
     Left = 176
-    Top = 168
+    Top = 88
     object RequirementTableId: TAutoIncField
       FieldName = 'Id'
       ReadOnly = True
@@ -82,6 +83,14 @@ object MSSQLDataModule: TMSSQLDataModule
       KeyFields = 'TypeId'
       Lookup = True
     end
+    object RequirementTableAuthors: TWideStringField
+      FieldName = 'Authors'
+      Size = 100
+    end
+    object RequirementTableSource: TWideStringField
+      FieldName = 'Source'
+      Size = 500
+    end
   end
   object GroupDS: TDataSource
     DataSet = GroupTable
@@ -104,31 +113,10 @@ object MSSQLDataModule: TMSSQLDataModule
       Size = 100
     end
   end
-  object StakehodlerDS: TDataSource
-    DataSet = StakehodlerTable
-    Left = 280
-    Top = 88
-  end
-  object StakehodlerTable: TADOTable
-    Active = True
-    Connection = MSSQLConnection
-    CursorType = ctStatic
-    TableName = 'Stakeholder'
-    Left = 176
-    Top = 88
-    object StakehodlerTableId: TAutoIncField
-      FieldName = 'Id'
-      ReadOnly = True
-    end
-    object StakehodlerTablePersonName: TWideStringField
-      FieldName = 'PersonName'
-      Size = 100
-    end
-  end
   object TypeDS: TDataSource
     DataSet = TypeTable
     Left = 280
-    Top = 256
+    Top = 176
   end
   object TypeTable: TADOTable
     Active = True
@@ -136,7 +124,7 @@ object MSSQLDataModule: TMSSQLDataModule
     CursorType = ctStatic
     TableName = 'RequirementType'
     Left = 176
-    Top = 248
+    Top = 168
     object TypeTableId: TAutoIncField
       FieldName = 'Id'
       ReadOnly = True
@@ -152,7 +140,7 @@ object MSSQLDataModule: TMSSQLDataModule
     CursorType = ctStatic
     TableName = 'RequirementStatus'
     Left = 176
-    Top = 320
+    Top = 240
     object StatusTableId: TAutoIncField
       FieldName = 'Id'
       ReadOnly = True
@@ -165,74 +153,7 @@ object MSSQLDataModule: TMSSQLDataModule
   object StatusDS: TDataSource
     DataSet = StatusTable
     Left = 280
-    Top = 320
-  end
-  object Backlog: TADOTable
-    Active = True
-    Connection = MSSQLConnection
-    CursorType = ctStatic
-    TableName = 'Requirement'
-    Left = 48
-    Top = 520
-    object AutoIncField1: TAutoIncField
-      FieldName = 'Id'
-      ReadOnly = True
-    end
-    object WideMemoField1: TWideMemoField
-      FieldName = 'RawText'
-      BlobType = ftWideMemo
-    end
-    object IntegerField1: TIntegerField
-      FieldName = 'TypeId'
-    end
-    object IntegerField2: TIntegerField
-      FieldName = 'Priority'
-    end
-    object IntegerField3: TIntegerField
-      FieldName = 'StatusId'
-    end
-    object IntegerField4: TIntegerField
-      FieldName = 'GroupId'
-    end
-    object WideMemoField2: TWideMemoField
-      FieldName = 'Comment'
-      BlobType = ftWideMemo
-    end
-    object DateTimeField1: TDateTimeField
-      FieldName = 'ElicitationDate'
-      EditMask = '!99/99/00;1;_'
-    end
-    object WideStringField1: TWideStringField
-      FieldName = 'ChangeRequestLink'
-      Size = 500
-    end
-    object WideStringField2: TWideStringField
-      FieldName = 'Short'
-      Size = 80
-    end
-    object StringField1: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Status'
-      LookupDataSet = StatusTable
-      LookupKeyFields = 'Id'
-      LookupResultField = 'Caption'
-      KeyFields = 'StatusId'
-      Lookup = True
-    end
-    object StringField2: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Type'
-      LookupDataSet = TypeTable
-      LookupKeyFields = 'Id'
-      LookupResultField = 'Caption'
-      KeyFields = 'TypeId'
-      Lookup = True
-    end
-  end
-  object BacklogDS: TDataSource
-    DataSet = Backlog
-    Left = 152
-    Top = 520
+    Top = 240
   end
   object BacklogSQL: TADOQuery
     Active = True
@@ -256,12 +177,12 @@ object MSSQLDataModule: TMSSQLDataModule
       'join RequirementStatus as st on st.Id = r.[StatusId]'
       'join RequirementType as t on t.Id = r.TypeId')
     Left = 176
-    Top = 392
+    Top = 312
   end
   object BacklogSQLDS: TDataSource
     DataSet = BacklogSQL
     Left = 280
-    Top = 392
+    Top = 312
   end
   object GroupForRCDS: TDataSource
     DataSet = GroupForRC

@@ -14,9 +14,6 @@ type
     AddNewStakeholderBtn: TToolButton;
     SaveStakehodlerBtn: TToolButton;
     DeleteStakholderBtn: TToolButton;
-    procedure AddNewStakeholderBtnClick(Sender: TObject);
-    procedure SaveStakehodlerBtnClick(Sender: TObject);
-    procedure DeleteStakholderBtnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,23 +29,5 @@ implementation
 
 uses DataModuleUnit;
 
-procedure TStakeholderForm.AddNewStakeholderBtnClick(Sender: TObject);
-begin
-  MSSQLDataModule.StakehodlerTable.Insert;
-end;
-
-procedure TStakeholderForm.DeleteStakholderBtnClick(Sender: TObject);
-begin
-  try
-    MSSQLDataModule.StakehodlerTable.Delete;
-  except
-    ShowMessage('This stakehodler is used now. You can not delete one.');
-  end;
-end;
-
-procedure TStakeholderForm.SaveStakehodlerBtnClick(Sender: TObject);
-begin
-  MSSQLDataModule.StakehodlerTable.Post;
-end;
 
 end.

@@ -22,7 +22,6 @@ object StakeholderForm: TStakeholderForm
     Width = 424
     Height = 284
     Align = alClient
-    DataSource = MSSQLDataModule.StakehodlerDS
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -64,21 +63,18 @@ object StakeholderForm: TStakeholderForm
       Top = 0
       Caption = 'Add New'
       ImageIndex = 0
-      OnClick = AddNewStakeholderBtnClick
     end
     object SaveStakehodlerBtn: TToolButton
       Left = 64
       Top = 0
       Caption = 'Save'
       ImageIndex = 1
-      OnClick = SaveStakehodlerBtnClick
     end
     object DeleteStakholderBtn: TToolButton
       Left = 128
       Top = 0
       Caption = 'Delete'
       ImageIndex = 2
-      OnClick = DeleteStakholderBtnClick
     end
   end
 end

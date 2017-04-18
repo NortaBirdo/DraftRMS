@@ -5,7 +5,7 @@ object RequirementCardForm: TRequirementCardForm
   BorderStyle = bsSingle
   Caption = 'Card of Requirement'
   ClientHeight = 557
-  ClientWidth = 981
+  ClientWidth = 1054
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,7 +18,7 @@ object RequirementCardForm: TRequirementCardForm
   TextHeight = 13
   object Label1: TLabel
     Left = 8
-    Top = 8
+    Top = 35
     Width = 35
     Height = 13
     Caption = 'Status:'
@@ -32,21 +32,21 @@ object RequirementCardForm: TRequirementCardForm
   end
   object Label3: TLabel
     Left = 687
-    Top = 75
+    Top = 107
     Width = 38
     Height = 13
     Caption = 'Authors'
   end
   object Label4: TLabel
-    Left = 304
-    Top = 11
+    Left = 687
+    Top = 35
     Width = 34
     Height = 13
     Caption = 'Proirity'
   end
   object Label5: TLabel
-    Left = 8
-    Top = 35
+    Left = 303
+    Top = 8
     Width = 24
     Height = 13
     Caption = 'Type'
@@ -58,13 +58,6 @@ object RequirementCardForm: TRequirementCardForm
     Height = 13
     Caption = 'Date of Elicitation:'
   end
-  object Label7: TLabel
-    Left = 687
-    Top = 200
-    Width = 23
-    Height = 13
-    Caption = 'Links'
-  end
   object Label8: TLabel
     Left = 8
     Top = 75
@@ -74,7 +67,7 @@ object RequirementCardForm: TRequirementCardForm
   end
   object Label9: TLabel
     Left = 687
-    Top = 358
+    Top = 213
     Width = 45
     Height = 13
     Caption = 'Comment'
@@ -86,29 +79,43 @@ object RequirementCardForm: TRequirementCardForm
     Height = 13
     Caption = 'Group'
   end
-  object Button1: TButton
-    Left = 901
+  object Label12: TLabel
+    Left = 8
+    Top = 8
+    Width = 11
+    Height = 13
+    Caption = 'ID'
+  end
+  object Label7: TLabel
+    Left = 687
+    Top = 357
+    Width = 33
+    Height = 13
+    Caption = 'Source'
+  end
+  object SaveBtn: TButton
+    Left = 978
     Top = 520
     Width = 71
     Height = 25
     Caption = 'Save'
     TabOrder = 0
-    OnClick = Button1Click
+    OnClick = SaveBtnClick
   end
-  object Button2: TButton
+  object CancelBtn: TButton
     Left = 8
     Top = 520
     Width = 75
     Height = 25
     Caption = 'Cancel'
     TabOrder = 1
-    OnClick = Button2Click
+    OnClick = CancelBtnClick
   end
   object ReqTextEdit: TDBRichEdit
     Left = 8
-    Top = 128
+    Top = 126
     Width = 673
-    Height = 386
+    Height = 388
     DataField = 'RawText'
     DataSource = MSSQLDataModule.RequirementDS
     Font.Charset = RUSSIAN_CHARSET
@@ -139,17 +146,17 @@ object RequirementCardForm: TRequirementCardForm
     TabOrder = 4
   end
   object PriorityEdit: TDBEdit
-    Left = 344
-    Top = 8
-    Width = 201
+    Left = 792
+    Top = 35
+    Width = 184
     Height = 21
     DataField = 'Priority'
     DataSource = MSSQLDataModule.RequirementDS
     TabOrder = 5
   end
   object DBLookupComboBox1: TDBLookupComboBox
-    Left = 49
-    Top = 35
+    Left = 344
+    Top = 8
     Width = 145
     Height = 21
     DataField = 'TypeId'
@@ -161,7 +168,7 @@ object RequirementCardForm: TRequirementCardForm
   end
   object DBLookupComboBox2: TDBLookupComboBox
     Left = 49
-    Top = 8
+    Top = 35
     Width = 145
     Height = 21
     DataField = 'StatusId'
@@ -173,9 +180,9 @@ object RequirementCardForm: TRequirementCardForm
   end
   object DBMemo1: TDBMemo
     Left = 687
-    Top = 377
-    Width = 289
-    Height = 137
+    Top = 232
+    Width = 362
+    Height = 119
     DataField = 'Comment'
     DataSource = MSSQLDataModule.RequirementDS
     TabOrder = 8
@@ -191,5 +198,34 @@ object RequirementCardForm: TRequirementCardForm
     ListField = 'Caption'
     ListSource = MSSQLDataModule.GroupForRCDS
     TabOrder = 9
+  end
+  object DBEdit3: TDBEdit
+    Left = 49
+    Top = 8
+    Width = 143
+    Height = 21
+    Color = cl3DLight
+    DataField = 'Id'
+    DataSource = MSSQLDataModule.RequirementDS
+    ReadOnly = True
+    TabOrder = 10
+  end
+  object Author: TDBMemo
+    Left = 687
+    Top = 126
+    Width = 358
+    Height = 82
+    DataField = 'Authors'
+    DataSource = MSSQLDataModule.RequirementDS
+    TabOrder = 11
+  end
+  object DBMemo2: TDBMemo
+    Left = 687
+    Top = 376
+    Width = 362
+    Height = 138
+    DataField = 'Source'
+    DataSource = MSSQLDataModule.RequirementDS
+    TabOrder = 12
   end
 end
