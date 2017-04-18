@@ -5,7 +5,7 @@
         <FrameworkType>VCL</FrameworkType>
         <MainSource>DraftRMS.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -114,6 +114,10 @@
         </DCCReference>
         <DCCReference Include="BacklogUnit.pas">
             <Form>BacklogForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="QuickEditFormUnit.pas">
+            <Form>QuickEditForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

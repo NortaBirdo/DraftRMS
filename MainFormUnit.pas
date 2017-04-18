@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,
-  Vcl.ComCtrls, Vcl.ToolWin, Vcl.ExtCtrls, Vcl.Menus;
+  Vcl.ComCtrls, Vcl.ToolWin, Vcl.ExtCtrls, Vcl.Menus, Data.DB, Vcl.DBCtrls;
 
 type
   TMainForm = class(TForm)
@@ -23,6 +23,7 @@ type
     PopupMenu1: TPopupMenu;
     OpenURL1: TMenuItem;
     CopyURL1: TMenuItem;
+    DBRichEdit1: TDBRichEdit;
     procedure CreateNewRequirementBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure NewGroupBtnClick(Sender: TObject);
@@ -33,6 +34,7 @@ type
     procedure BacklogClick(Sender: TObject);
     procedure OpenURL1Click(Sender: TObject);
     procedure CopyURL1Click(Sender: TObject);
+
   private
     { Private declarations }
   public

@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.DBCtrls,
-  Vcl.Mask, Vcl.Grids, Vcl.DBGrids;
+  Vcl.Mask, Vcl.Grids, Vcl.DBGrids, Data.Win.ADODB;
 
 type
   TRequirementCardForm = class(TForm)
@@ -39,10 +39,12 @@ type
     { Private declarations }
   public
     { Public declarations }
+    Table: TADOTable;
   end;
 
 var
   RequirementCardForm: TRequirementCardForm;
+
 
 implementation
 
@@ -52,8 +54,14 @@ uses DataModuleUnit;
 
 
 procedure TRequirementCardForm.SaveBtnClick(Sender: TObject);
+var
+  str: string;
 begin
-  MSSQLDataModule.RequirementTable.Post;
+  with MSSQLDataModule.RequirementTable do begin
+    edit;
+    Post;
+  end;
+
   RequirementCardForm.Close;
 end;
 

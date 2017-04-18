@@ -15,10 +15,25 @@ object BacklogForm: TBacklogForm
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
+  object DBRichEdit1: TDBRichEdit
+    Left = 568
+    Top = 33
+    Width = 432
+    Height = 661
+    Align = alRight
+    DataField = 'RawText'
+    DataSource = MSSQLDataModule.BacklogSQLDS
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    TabOrder = 3
+  end
   object DBGrid1: TDBGrid
     Left = 0
     Top = 33
-    Width = 1000
+    Width = 568
     Height = 661
     Align = alClient
     DataSource = MSSQLDataModule.BacklogSQLDS
@@ -52,13 +67,6 @@ object BacklogForm: TBacklogForm
       end
       item
         Expanded = False
-        FieldName = 'Short'
-        Title.Caption = 'Short Description'
-        Width = 456
-        Visible = True
-      end
-      item
-        Expanded = False
         FieldName = 'Priority'
         Visible = True
       end
@@ -77,6 +85,13 @@ object BacklogForm: TBacklogForm
     Height = 33
     Align = alTop
     TabOrder = 1
+    object Label1: TLabel
+      Left = 461
+      Top = 2
+      Width = 18
+      Height = 22
+      Caption = 'ID: '
+    end
     object TypeFilterList: TComboBox
       Left = 11
       Top = 2
@@ -91,41 +106,45 @@ object BacklogForm: TBacklogForm
         'BR'
         'All')
     end
-    object ShowArchiveChB: TCheckBox
-      Left = 303
-      Top = 2
-      Width = 167
-      Height = 22
-      Caption = 'Show archive and rejected'
-      TabOrder = 1
-      OnClick = ShowArchiveChBClick
-    end
     object DescriptionEdit: TEdit
       Left = 169
       Top = 2
       Width = 121
       Height = 22
-      TabOrder = 2
+      TabOrder = 1
       OnChange = DescriptionEditChange
     end
-    object ExcludeCRChB: TCheckBox
-      Left = 486
+    object StatusList: TComboBox
+      Left = 303
       Top = 2
-      Width = 179
+      Width = 145
+      Height = 21
+      ItemIndex = 0
+      TabOrder = 2
+      Text = 'All Active'
+      OnChange = StatusListChange
+      Items.Strings = (
+        'All Active'
+        'Exclude CR'
+        'All')
+    end
+    object IDEdit: TEdit
+      Left = 492
+      Top = 2
+      Width = 121
       Height = 22
-      Caption = 'Exclude CR Requirement'
       TabOrder = 3
+      OnChange = IDEditChange
     end
   end
   object InitSQL: TMemo
-    Left = 203
-    Top = 344
+    Left = 587
+    Top = 424
     Width = 382
     Height = 225
     Lines.Strings = (
       'select '
       ' r.Id, '
-      ' r.[Short], '
       ' r.RawText,'
       ' r.[Priority], '
       ' r.[Comment],'

@@ -1,14 +1,15 @@
 object MSSQLDataModule: TMSSQLDataModule
   OldCreateOrder = False
-  OnCreate = DataModuleCreate
-  Height = 586
-  Width = 730
+  Height = 416
+  Width = 643
   object MSSQLConnection: TADOConnection
     Connected = True
     ConnectionString = 
-      'Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security In' +
-      'fo=False;Initial Catalog=DraftRMS;Data Source=NSOKOLOVSKIY\SQLEX' +
-      'PRESS'
+      'Provider=SQLOLEDB.1;Password=dYlk69FNsdfh;Persist Security Info=' +
+      'True;User ID=budgetUser;Initial Catalog=DraftRMS;Data Source=PM4' +
+      ';Use Procedure for Prepare=1;Auto Translate=True;Packet Size=409' +
+      '6;Workstation ID=NSOKOLOVSKIY;Use Encryption for Data=False;Tag ' +
+      'with column collation when possible=False'
     LoginPrompt = False
     Provider = 'SQLOLEDB.1'
     Left = 56
@@ -60,10 +61,6 @@ object MSSQLDataModule: TMSSQLDataModule
     object RequirementTableChangeRequestLink: TWideStringField
       FieldName = 'ChangeRequestLink'
       Size = 500
-    end
-    object RequirementTableShort: TWideStringField
-      FieldName = 'Short'
-      Size = 80
     end
     object RequirementTableStatus: TStringField
       FieldKind = fkLookup
@@ -163,7 +160,6 @@ object MSSQLDataModule: TMSSQLDataModule
     SQL.Strings = (
       'select '
       ' r.Id, '
-      ' r.[Short], '
       ' r.RawText,'
       ' r.[Priority], '
       ' r.[Comment],'
@@ -203,6 +199,80 @@ object MSSQLDataModule: TMSSQLDataModule
     object WideStringField3: TWideStringField
       FieldName = 'Caption'
       Size = 100
+    end
+  end
+  object ReqFromBacklogDS: TDataSource
+    DataSet = ReqFromBacklog
+    Left = 528
+    Top = 96
+  end
+  object ReqFromBacklog: TADOTable
+    Active = True
+    Connection = MSSQLConnection
+    CursorType = ctStatic
+    IndexFieldNames = 'Id'
+    MasterFields = 'Id'
+    MasterSource = BacklogSQLDS
+    TableName = 'Requirement'
+    Left = 424
+    Top = 96
+    object AutoIncField1: TAutoIncField
+      FieldName = 'Id'
+      ReadOnly = True
+    end
+    object WideMemoField1: TWideMemoField
+      FieldName = 'RawText'
+      BlobType = ftWideMemo
+    end
+    object IntegerField1: TIntegerField
+      FieldName = 'TypeId'
+    end
+    object IntegerField2: TIntegerField
+      FieldName = 'Priority'
+    end
+    object IntegerField3: TIntegerField
+      FieldName = 'StatusId'
+    end
+    object IntegerField4: TIntegerField
+      FieldName = 'GroupId'
+    end
+    object WideMemoField2: TWideMemoField
+      FieldName = 'Comment'
+      BlobType = ftWideMemo
+    end
+    object DateTimeField1: TDateTimeField
+      FieldName = 'ElicitationDate'
+      EditMask = '!99/99/00;1;_'
+    end
+    object WideStringField1: TWideStringField
+      FieldName = 'ChangeRequestLink'
+      Size = 500
+    end
+    object StringField1: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Status'
+      LookupDataSet = StatusTable
+      LookupKeyFields = 'Id'
+      LookupResultField = 'Caption'
+      KeyFields = 'StatusId'
+      Lookup = True
+    end
+    object StringField2: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Type'
+      LookupDataSet = TypeTable
+      LookupKeyFields = 'Id'
+      LookupResultField = 'Caption'
+      KeyFields = 'TypeId'
+      Lookup = True
+    end
+    object WideStringField4: TWideStringField
+      FieldName = 'Authors'
+      Size = 100
+    end
+    object WideStringField5: TWideStringField
+      FieldName = 'Source'
+      Size = 500
     end
   end
 end

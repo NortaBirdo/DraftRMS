@@ -96,7 +96,7 @@ object RequirementCardForm: TRequirementCardForm
   object SaveBtn: TButton
     Left = 978
     Top = 520
-    Width = 71
+    Width = 63
     Height = 25
     Caption = 'Save'
     TabOrder = 0

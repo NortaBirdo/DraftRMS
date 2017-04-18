@@ -2,8 +2,8 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = 'Draft RMS'
-  ClientHeight = 633
-  ClientWidth = 1184
+  ClientHeight = 687
+  ClientWidth = 1100
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,7 +18,7 @@ object MainForm: TMainForm
   object Splitter1: TSplitter
     Left = 181
     Top = 29
-    Height = 604
+    Height = 545
     ExplicitLeft = 208
     ExplicitTop = 288
     ExplicitHeight = 100
@@ -26,8 +26,8 @@ object MainForm: TMainForm
   object DBGrid1: TDBGrid
     Left = 184
     Top = 29
-    Width = 1000
-    Height = 604
+    Width = 916
+    Height = 545
     Align = alClient
     DataSource = MSSQLDataModule.RequirementDS
     Font.Charset = DEFAULT_CHARSET
@@ -62,14 +62,7 @@ object MainForm: TMainForm
         Expanded = False
         FieldName = 'Authors'
         ReadOnly = True
-        Width = 138
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'Short'
-        ReadOnly = True
-        Width = 313
+        Width = 363
         Visible = True
       end
       item
@@ -102,13 +95,14 @@ object MainForm: TMainForm
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 1184
+    Width = 1100
     Height = 29
     ButtonHeight = 24
     ButtonWidth = 121
     Caption = 'ToolBar1'
     ShowCaptions = True
     TabOrder = 1
+    ExplicitWidth = 1184
     object CreateNewRequirementBtn: TToolButton
       Left = 0
       Top = 0
@@ -165,7 +159,7 @@ object MainForm: TMainForm
     Left = 0
     Top = 29
     Width = 181
-    Height = 604
+    Height = 545
     Align = alLeft
     DataSource = MSSQLDataModule.GroupDS
     Font.Charset = DEFAULT_CHARSET
@@ -195,9 +189,27 @@ object MainForm: TMainForm
         Visible = True
       end>
   end
+  object DBRichEdit1: TDBRichEdit
+    Left = 0
+    Top = 574
+    Width = 1100
+    Height = 113
+    Align = alBottom
+    DataField = 'RawText'
+    DataSource = MSSQLDataModule.RequirementDS
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ReadOnly = True
+    TabOrder = 3
+    ExplicitTop = 520
+    ExplicitWidth = 1184
+  end
   object PopupMenu1: TPopupMenu
-    Left = 944
-    Top = 120
+    Left = 728
+    Top = 104
     object OpenURL1: TMenuItem
       Caption = 'Open URL'
       OnClick = OpenURL1Click

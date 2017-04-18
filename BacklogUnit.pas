@@ -5,24 +5,28 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.DBGrids, Vcl.Menus,
-  Vcl.ComCtrls, Vcl.StdCtrls, Vcl.ToolWin, Vcl.ExtCtrls;
+  Vcl.ComCtrls, Vcl.StdCtrls, Vcl.ToolWin, Vcl.ExtCtrls, Vcl.DBCtrls;
 
 type
   TBacklogForm = class(TForm)
     DBGrid1: TDBGrid;
     TypeFilterList: TComboBox;
     ControlBar1: TControlBar;
-    ShowArchiveChB: TCheckBox;
     DescriptionEdit: TEdit;
     InitSQL: TMemo;
-    ExcludeCRChB: TCheckBox;
+    StatusList: TComboBox;
+    Label1: TLabel;
+    IDEdit: TEdit;
+    DBRichEdit1: TDBRichEdit;
     procedure FormCreate(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure TypeFilterListChange(Sender: TObject);
-    procedure findBtnClick(Sender: TObject);
     procedure Find;
     procedure ShowArchiveChBClick(Sender: TObject);
     procedure DescriptionEditChange(Sender: TObject);
+    procedure ExcludeCRChBClick(Sender: TObject);
+    procedure StatusListChange(Sender: TObject);
+    procedure IDEditChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,9 +40,14 @@ implementation
 
 {$R *.dfm}
 
-uses DataModuleUnit, RequirementCardUnit;
+uses DataModuleUnit, RequirementCardUnit, QuickEditFormUnit;
 
 procedure TBacklogForm.DescriptionEditChange(Sender: TObject);
+begin
+  Find
+end;
+
+procedure TBacklogForm.ExcludeCRChBClick(Sender: TObject);
 begin
   Find
 end;
@@ -58,11 +67,17 @@ query := '';
 
 //include description of requirement in sql
 if DescriptionEdit.Text <> '' then
-  query := query + ' and r.Short Like ' + QuotedStr('%' + DescriptionEdit.Text + '%');
+  query := query + ' and r.RawText Like ' + QuotedStr('%' + DescriptionEdit.Text + '%');
 
 //eclude archive and rejected requirement in sql
-if not ShowArchiveChB.Checked then
- query := query + ' and (r.StatusId = 1 or r.StatusId = 2 or r.StatusId = 3)';
+case StatusList.ItemIndex of
+  0: query := query + ' and (r.StatusId = 1 or r.StatusId = 2 or r.StatusId = 3)';
+  1: query := query + ' and (r.StatusId = 1 or r.StatusId = 2)';
+end;
+
+//include ID of requirement in sql
+if IDEdit.Text <> '' then
+  query := ' Where r.Id = ' + IDEdit.Text;
 
   with MSSQLDataModule.BacklogSQL do
   begin
@@ -76,22 +91,26 @@ if not ShowArchiveChB.Checked then
 
 end;
 
-procedure TBacklogForm.DBGrid1DblClick(Sender: TObject);
+procedure TBacklogForm.StatusListChange(Sender: TObject);
 begin
-  Application.CreateForm(TRequirementCardForm, RequirementCardForm);
-  RequirementCardForm.ShowModal;
-  RequirementCardForm.Free;
-  BacklogForm.Refresh;
+  Find
 end;
 
-procedure TBacklogForm.findBtnClick(Sender: TObject);
+procedure TBacklogForm.DBGrid1DblClick(Sender: TObject);
 begin
-  Find;
+  QuickEditForm.ShowModal;
+  MSSQLDataModule.BacklogSQL.Refresh;
+  BacklogForm.Refresh;
 end;
 
 procedure TBacklogForm.FormCreate(Sender: TObject);
 begin
  Find;
+end;
+
+procedure TBacklogForm.IDEditChange(Sender: TObject);
+begin
+  Find;
 end;
 
 procedure TBacklogForm.ShowArchiveChBClick(Sender: TObject);
