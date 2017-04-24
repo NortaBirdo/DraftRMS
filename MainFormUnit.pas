@@ -24,6 +24,8 @@ type
     OpenURL1: TMenuItem;
     CopyURL1: TMenuItem;
     DBRichEdit1: TDBRichEdit;
+    ToolButton2: TToolButton;
+    RefreshBtn: TToolButton;
     procedure CreateNewRequirementBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure NewGroupBtnClick(Sender: TObject);
@@ -34,6 +36,7 @@ type
     procedure BacklogClick(Sender: TObject);
     procedure OpenURL1Click(Sender: TObject);
     procedure CopyURL1Click(Sender: TObject);
+    procedure RefreshBtnClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -115,6 +118,11 @@ end;
 procedure TMainForm.OpenURL1Click(Sender: TObject);
 begin
  ShellExecute( Handle, 'open', PWideChar(MSSQLDataModule.RequirementTable.FieldByName('ChangeRequestLink').AsString), nil, nil, SW_NORMAL );
+end;
+
+procedure TMainForm.RefreshBtnClick(Sender: TObject);
+begin
+  MSSQLDataModule.RequirementTable.Refresh;
 end;
 
 procedure TMainForm.SaveGroupBtnClick(Sender: TObject);

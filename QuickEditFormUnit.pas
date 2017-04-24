@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.DBCtrls, Vcl.StdCtrls, Vcl.ComCtrls,
-  Vcl.Mask;
+  Vcl.Mask, Vcl.DBLookup;
 
 type
   TQuickEditForm = class(TForm)
@@ -23,6 +23,16 @@ type
     DBMemo1: TDBMemo;
     CancelBtn: TButton;
     SaveBtn: TButton;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    DBMemo2: TDBMemo;
+    DBMemo3: TDBMemo;
+    DBEdit3: TDBEdit;
+    DBLookupComboBox1: TDBLookupComboBox;
+    DBLookupComboBox3: TDBLookupComboBox;
     procedure SaveBtnClick(Sender: TObject);
     procedure CancelBtnClick(Sender: TObject);
   private

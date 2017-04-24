@@ -102,7 +102,6 @@ object MainForm: TMainForm
     Caption = 'ToolBar1'
     ShowCaptions = True
     TabOrder = 1
-    ExplicitWidth = 1184
     object CreateNewRequirementBtn: TToolButton
       Left = 0
       Top = 0
@@ -154,6 +153,21 @@ object MainForm: TMainForm
       ImageIndex = 5
       OnClick = BacklogClick
     end
+    object ToolButton2: TToolButton
+      Left = 621
+      Top = 0
+      Width = 8
+      Caption = 'ToolButton2'
+      ImageIndex = 6
+      Style = tbsSeparator
+    end
+    object RefreshBtn: TToolButton
+      Left = 629
+      Top = 0
+      Caption = 'Refresh'
+      ImageIndex = 6
+      OnClick = RefreshBtnClick
+    end
   end
   object DBGrid2: TDBGrid
     Left = 0
@@ -204,8 +218,6 @@ object MainForm: TMainForm
     Font.Style = [fsBold]
     ReadOnly = True
     TabOrder = 3
-    ExplicitTop = 520
-    ExplicitWidth = 1184
   end
   object PopupMenu1: TPopupMenu
     Left = 728

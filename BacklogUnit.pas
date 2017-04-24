@@ -99,8 +99,8 @@ end;
 procedure TBacklogForm.DBGrid1DblClick(Sender: TObject);
 begin
   QuickEditForm.ShowModal;
-  MSSQLDataModule.BacklogSQL.Refresh;
-  BacklogForm.Refresh;
+  MSSQLDataModule.BacklogSQL.Active := false;
+  MSSQLDataModule.BacklogSQL.Active := true;
 end;
 
 procedure TBacklogForm.FormCreate(Sender: TObject);
