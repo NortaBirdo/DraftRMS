@@ -19,7 +19,6 @@ type
     Label6: TLabel;
     Label8: TLabel;
     Label9: TLabel;
-    ReqTextEdit: TDBRichEdit;
     DBEdit1: TDBEdit;
     DBEdit2: TDBEdit;
     PriorityEdit: TDBEdit;
@@ -33,6 +32,7 @@ type
     Author: TDBMemo;
     Label7: TLabel;
     DBMemo2: TDBMemo;
+    DBMemo3: TDBMemo;
     procedure CancelBtnClick(Sender: TObject);
     procedure SaveBtnClick(Sender: TObject);
   private

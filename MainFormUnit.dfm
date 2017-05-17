@@ -18,7 +18,7 @@ object MainForm: TMainForm
   object Splitter1: TSplitter
     Left = 181
     Top = 29
-    Height = 545
+    Height = 539
     ExplicitLeft = 208
     ExplicitTop = 288
     ExplicitHeight = 100
@@ -27,7 +27,7 @@ object MainForm: TMainForm
     Left = 184
     Top = 29
     Width = 916
-    Height = 545
+    Height = 539
     Align = alClient
     DataSource = MSSQLDataModule.RequirementDS
     Font.Charset = DEFAULT_CHARSET
@@ -62,7 +62,7 @@ object MainForm: TMainForm
         Expanded = False
         FieldName = 'Authors'
         ReadOnly = True
-        Width = 363
+        Width = 373
         Visible = True
       end
       item
@@ -173,7 +173,7 @@ object MainForm: TMainForm
     Left = 0
     Top = 29
     Width = 181
-    Height = 545
+    Height = 539
     Align = alLeft
     DataSource = MSSQLDataModule.GroupDS
     Font.Charset = DEFAULT_CHARSET
@@ -203,21 +203,19 @@ object MainForm: TMainForm
         Visible = True
       end>
   end
-  object DBRichEdit1: TDBRichEdit
+  object DBMemo1: TDBMemo
     Left = 0
-    Top = 574
+    Top = 568
     Width = 1100
-    Height = 113
+    Height = 119
     Align = alBottom
-    DataField = 'RawText'
+    DataField = 'RawDataPlant'
     DataSource = MSSQLDataModule.RequirementDS
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
     ReadOnly = True
     TabOrder = 3
+    ExplicitLeft = 981
+    ExplicitTop = 29
+    ExplicitWidth = 658
   end
   object PopupMenu1: TPopupMenu
     Left = 728

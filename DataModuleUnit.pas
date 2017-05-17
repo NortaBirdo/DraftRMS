@@ -15,7 +15,6 @@ type
     GroupTableId: TAutoIncField;
     GroupTableCaption: TWideStringField;
     RequirementTableId: TAutoIncField;
-    RequirementTableRawText: TWideMemoField;
     RequirementTableTypeId: TIntegerField;
     RequirementTablePriority: TIntegerField;
     RequirementTableStatusId: TIntegerField;
@@ -44,7 +43,6 @@ type
     ReqFromBacklogDS: TDataSource;
     ReqFromBacklog: TADOTable;
     AutoIncField1: TAutoIncField;
-    WideMemoField1: TWideMemoField;
     IntegerField1: TIntegerField;
     IntegerField2: TIntegerField;
     IntegerField3: TIntegerField;
@@ -56,6 +54,8 @@ type
     StringField2: TStringField;
     WideStringField4: TWideStringField;
     WideStringField5: TWideStringField;
+    RequirementTableRawDataPlant: TWideMemoField;
+    ReqFromBacklogRawDataPlant: TWideMemoField;
 
 
   private

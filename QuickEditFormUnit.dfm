@@ -131,21 +131,6 @@ object QuickEditForm: TQuickEditForm
     DataSource = MSSQLDataModule.ReqFromBacklogDS
     TabOrder = 2
   end
-  object DBRichEdit1: TDBRichEdit
-    Left = 8
-    Top = 115
-    Width = 549
-    Height = 326
-    DataField = 'RawText'
-    DataSource = MSSQLDataModule.ReqFromBacklogDS
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ScrollBars = ssVertical
-    TabOrder = 3
-  end
   object DBMemo1: TDBMemo
     Left = 563
     Top = 219
@@ -153,7 +138,7 @@ object QuickEditForm: TQuickEditForm
     Height = 108
     DataField = 'Comment'
     DataSource = MSSQLDataModule.ReqFromBacklogDS
-    TabOrder = 4
+    TabOrder = 3
   end
   object CancelBtn: TButton
     Left = 8
@@ -161,7 +146,7 @@ object QuickEditForm: TQuickEditForm
     Width = 75
     Height = 25
     Caption = 'Cancel'
-    TabOrder = 5
+    TabOrder = 4
     OnClick = CancelBtnClick
   end
   object SaveBtn: TButton
@@ -170,7 +155,7 @@ object QuickEditForm: TQuickEditForm
     Width = 75
     Height = 25
     Caption = 'Save'
-    TabOrder = 6
+    TabOrder = 5
     OnClick = SaveBtnClick
   end
   object DBMemo2: TDBMemo
@@ -180,7 +165,7 @@ object QuickEditForm: TQuickEditForm
     Height = 79
     DataField = 'Authors'
     DataSource = MSSQLDataModule.ReqFromBacklogDS
-    TabOrder = 7
+    TabOrder = 6
   end
   object DBMemo3: TDBMemo
     Left = 563
@@ -189,7 +174,7 @@ object QuickEditForm: TQuickEditForm
     Height = 89
     DataField = 'Source'
     DataSource = MSSQLDataModule.ReqFromBacklogDS
-    TabOrder = 8
+    TabOrder = 7
   end
   object DBEdit3: TDBEdit
     Left = 560
@@ -199,7 +184,7 @@ object QuickEditForm: TQuickEditForm
     DataField = 'ElicitationDate'
     DataSource = MSSQLDataModule.ReqFromBacklogDS
     MaxLength = 8
-    TabOrder = 9
+    TabOrder = 8
   end
   object DBLookupComboBox1: TDBLookupComboBox
     Left = 560
@@ -211,7 +196,7 @@ object QuickEditForm: TQuickEditForm
     KeyField = 'Id'
     ListField = 'Caption'
     ListSource = MSSQLDataModule.TypeDS
-    TabOrder = 10
+    TabOrder = 9
   end
   object DBLookupComboBox3: TDBLookupComboBox
     Left = 721
@@ -223,6 +208,15 @@ object QuickEditForm: TQuickEditForm
     KeyField = 'Id'
     ListField = 'Caption'
     ListSource = MSSQLDataModule.GroupForRCDS
+    TabOrder = 10
+  end
+  object DBMemo4: TDBMemo
+    Left = 8
+    Top = 115
+    Width = 549
+    Height = 326
+    DataField = 'RawDataPlant'
+    DataSource = MSSQLDataModule.ReqFromBacklogDS
     TabOrder = 11
   end
 end

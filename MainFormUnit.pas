@@ -23,9 +23,9 @@ type
     PopupMenu1: TPopupMenu;
     OpenURL1: TMenuItem;
     CopyURL1: TMenuItem;
-    DBRichEdit1: TDBRichEdit;
     ToolButton2: TToolButton;
     RefreshBtn: TToolButton;
+    DBMemo1: TDBMemo;
     procedure CreateNewRequirementBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure NewGroupBtnClick(Sender: TObject);

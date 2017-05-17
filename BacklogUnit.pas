@@ -17,7 +17,7 @@ type
     StatusList: TComboBox;
     Label1: TLabel;
     IDEdit: TEdit;
-    DBRichEdit1: TDBRichEdit;
+    DBMemo1: TDBMemo;
     procedure FormCreate(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure TypeFilterListChange(Sender: TObject);

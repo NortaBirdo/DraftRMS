@@ -19,7 +19,6 @@ type
     Label6: TLabel;
     DBEdit1: TDBEdit;
     DBEdit2: TDBEdit;
-    DBRichEdit1: TDBRichEdit;
     DBMemo1: TDBMemo;
     CancelBtn: TButton;
     SaveBtn: TButton;
@@ -33,6 +32,7 @@ type
     DBEdit3: TDBEdit;
     DBLookupComboBox1: TDBLookupComboBox;
     DBLookupComboBox3: TDBLookupComboBox;
+    DBMemo4: TDBMemo;
     procedure SaveBtnClick(Sender: TObject);
     procedure CancelBtnClick(Sender: TObject);
   private

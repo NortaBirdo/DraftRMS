@@ -34,10 +34,6 @@ object MSSQLDataModule: TMSSQLDataModule
       FieldName = 'Id'
       ReadOnly = True
     end
-    object RequirementTableRawText: TWideMemoField
-      FieldName = 'RawText'
-      BlobType = ftWideMemo
-    end
     object RequirementTableTypeId: TIntegerField
       FieldName = 'TypeId'
     end
@@ -87,6 +83,10 @@ object MSSQLDataModule: TMSSQLDataModule
     object RequirementTableSource: TWideStringField
       FieldName = 'Source'
       Size = 500
+    end
+    object RequirementTableRawDataPlant: TWideMemoField
+      FieldName = 'RawDataPlant'
+      BlobType = ftWideMemo
     end
   end
   object GroupDS: TDataSource
@@ -160,7 +160,7 @@ object MSSQLDataModule: TMSSQLDataModule
     SQL.Strings = (
       'select '
       ' r.Id, '
-      ' r.RawText,'
+      ' r.RawDataPlant,'
       ' r.[Priority], '
       ' r.[Comment],'
       ' r.[ElicitationDate],'
@@ -220,10 +220,6 @@ object MSSQLDataModule: TMSSQLDataModule
       FieldName = 'Id'
       ReadOnly = True
     end
-    object WideMemoField1: TWideMemoField
-      FieldName = 'RawText'
-      BlobType = ftWideMemo
-    end
     object IntegerField1: TIntegerField
       FieldName = 'TypeId'
     end
@@ -273,6 +269,10 @@ object MSSQLDataModule: TMSSQLDataModule
     object WideStringField5: TWideStringField
       FieldName = 'Source'
       Size = 500
+    end
+    object ReqFromBacklogRawDataPlant: TWideMemoField
+      FieldName = 'RawDataPlant'
+      BlobType = ftWideMemo
     end
   end
 end

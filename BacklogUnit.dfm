@@ -15,25 +15,20 @@ object BacklogForm: TBacklogForm
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object DBRichEdit1: TDBRichEdit
-    Left = 568
+  object DBMemo1: TDBMemo
+    Left = 544
     Top = 33
-    Width = 432
+    Width = 456
     Height = 661
     Align = alRight
-    DataField = 'RawText'
+    DataField = 'RawDataPlant'
     DataSource = MSSQLDataModule.BacklogSQLDS
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
     TabOrder = 3
   end
   object DBGrid1: TDBGrid
     Left = 0
     Top = 33
-    Width = 568
+    Width = 544
     Height = 661
     Align = alClient
     DataSource = MSSQLDataModule.BacklogSQLDS
@@ -145,7 +140,7 @@ object BacklogForm: TBacklogForm
     Lines.Strings = (
       'select '
       ' r.Id, '
-      ' r.RawText,'
+      ' r.RawDataPlant,'
       ' r.[Priority], '
       ' r.[Comment],'
       ' r.[ElicitationDate],'
